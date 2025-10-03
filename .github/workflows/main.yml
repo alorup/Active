@@ -1,7 +1,6 @@
 name: Auto Commit
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -80,13 +79,13 @@ jobs:
 
               echo "Committing changes..."
               git commit -m "Auto commit #$NEXT_COUNT : target - ($FILE)" --allow-empty
+              sleep 60
 
             done
 
             echo "Pulling latest changes to ensure we start with the latest commit..."
             git pull --rebase origin main
             git push origin main
-            sleep 60
           done
 
           echo "All commits completed successfully!"
